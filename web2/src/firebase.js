@@ -16,6 +16,7 @@ const getFirebase = firebase => {
   }
 
   firebase.initializeApp(config)
+  firebase.firestore().settings({timestampsInSnapshots: true})
   firebaseCache = firebase
   return firebase
 }
