@@ -7,7 +7,7 @@ import Header from '../components/header'
 
 const SignIn = ({ firebase }) => (
   <div>
-    <Header siteTitle="Gatsby Firebase Starter" />
+    <Header siteTitle="🚀 Mocks" />
     <div
       style={{
         margin: '0 auto',
@@ -15,8 +15,7 @@ const SignIn = ({ firebase }) => (
         padding: '1.45rem 1.0875rem',
       }}
     >
-      <h4>Hey, please login to continue</h4>
-      <h5>This is just firebase login test</h5>
+      <h4>You need to login to browse your endpoints</h4>
     </div>
     <StyledFirebaseAuth
       uiConfig={getUiConfig(firebase)}
