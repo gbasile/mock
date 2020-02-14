@@ -9,7 +9,6 @@ class Signout extends Component {
     return (
       <button
         style={{
-          marginLeft: 10,
           borderRadius: '0.5rem',
           backgroundColor: '#fff',
           border: '2px solid #ffa400',
