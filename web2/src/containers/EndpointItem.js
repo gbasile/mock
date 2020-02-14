@@ -3,7 +3,7 @@ import { Link } from 'gatsby'
 
 const EndpointItem = ({ mock }) => (
     <li key={mock.id}>
-        <Link to={"/mock/" + mock.id}>{mock.id}</Link>
+        <a href={`https://us-central1-mock-a50e1.cloudfunctions.net/serveJSON/${mock.id}`}>{mock.id}</a>
     </li>
 )
 

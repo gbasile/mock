@@ -26,9 +26,7 @@ class EndpointList extends Component {
 
     return (
       <ul> 
-        {mocks.map((mock) => {
-            return (<EndpointItem mock = {mock} />)
-          })}
+        {mocks.map(mock => (<EndpointItem mock = {mock} />))}
       </ul>
     )
   }
