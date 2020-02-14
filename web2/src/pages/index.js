@@ -6,8 +6,9 @@ import SignOut from '../containers/SignOut'
 
 const IndexPage = () => (
   <Layout>
-    <h1>Hi Humans</h1>
     <Link to="/mocks/">Go to Mocks</Link>
+    <br />
+    <br />
     <SignOut />
   </Layout>
 )

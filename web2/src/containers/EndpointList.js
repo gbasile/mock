@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { withFirebase } from '../components/FirebaseContext'
+import EndpointItem from './EndpointItem'
 
 class EndpointList extends Component {
   state = {
@@ -25,11 +26,9 @@ class EndpointList extends Component {
 
     return (
       <ul> 
-        {
-          mocks.map((mock) => {
-              return <p key={mock.id}> {mock.id} </p>
-          })
-        }
+        {mocks.map((mock) => {
+            return (<EndpointItem mock = {mock} />)
+          })}
       </ul>
     )
   }
