@@ -8,7 +8,7 @@ class EndpointList extends Component {
   }
   componentDidMount() {
     const { firebase } = this.props
-    firebase
+    this.ref = firebase
       .firestore()
       .collection('mocks')
       .onSnapshot((snapshot) => {
@@ -17,6 +17,11 @@ class EndpointList extends Component {
         })
       })
   }
+
+  componentWillUnmount() {
+    this.ref.off()
+  }
+
   render() {
     const { mocks } = this.state
 
