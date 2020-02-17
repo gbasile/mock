@@ -4,11 +4,27 @@ import EndpointItem from './EndpointItem'
 
 class EndpointList extends Component {
   state = {
-    mocks: [],
+    domain: '',
+    endpoints: []
   }
+
   componentDidMount() {
     const { firebase } = this.props
-    let domain = firebase.auth().currentUser.email.split("@")[1]
+
+    this.authRef = firebase.auth()
+      .onAuthStateChanged(user => {
+        if (user) {
+          let domain = user.email.split("@")[1]
+          this.setState({ domain: domain })
+          this.updateEndpoints(domain)
+        } else {
+          this.setState({ domain: '' })
+        }
+      })
+  }
+
+  updateEndpoints(domain) {
+    const { firebase } = this.props
     this.ref = firebase
       .firestore()
       .collection('domains')
@@ -16,25 +32,27 @@ class EndpointList extends Component {
       .collection('endpoints')
       .onSnapshot((snapshot) => {
         this.setState({
-          mocks: snapshot.docs,
+          endpoints: snapshot.docs,
         })
       })
   }
 
   componentWillUnmount() {
     this.ref.off()
+    this.authRef.off()
   }
 
   render() {
-    const { mocks } = this.state
+    let endpoints = this.state.endpoints
+    let domain = this.state.domain
 
-    if (mocks.length == 0) {
+    if (endpoints.length == 0) {
       return <p>No endpoints available</p>
     }
 
     return (
-      <ul> 
-        {mocks.map(mock => (<EndpointItem key={mock.id} mock = {mock} />))}
+      <ul>
+        {endpoints.map(endpoint => (<EndpointItem key={endpoint.id} endpoint={endpoint} domain={domain}/>))}
       </ul>
     )
   }
