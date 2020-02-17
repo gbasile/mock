@@ -8,27 +8,17 @@ class EndpointList extends Component {
     endpoints: []
   }
 
-  componentDidMount() {
-    const { firebase } = this.props
-
-    this.authRef = firebase.auth()
-      .onAuthStateChanged(user => {
-        if (user) {
-          let domain = user.email.split("@")[1]
-          this.setState({ domain: domain })
-          this.updateEndpoints(domain)
-        } else {
-          this.setState({ domain: '' })
-        }
-      })
+  constructor(props) {
+    super(props);
+    this.state.domain = props.domain
   }
 
-  updateEndpoints(domain) {
+  componentDidMount() {
     const { firebase } = this.props
     this.ref = firebase
       .firestore()
       .collection('domains')
-      .doc(domain)
+      .doc(this.state.domain)
       .collection('endpoints')
       .onSnapshot((snapshot) => {
         this.setState({
@@ -36,10 +26,9 @@ class EndpointList extends Component {
         })
       })
   }
-
+  
   componentWillUnmount() {
     this.ref.off()
-    this.authRef.off()
   }
 
   render() {

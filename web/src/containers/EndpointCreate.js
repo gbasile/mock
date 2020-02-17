@@ -3,9 +3,15 @@ import { withFirebase } from '../components/FirebaseContext'
 
 class EndpointCreate extends Component {
     state = {
+        domain: '',
         path: '',
         json: '{}'
     }
+
+    constructor(props) {
+        super(props);
+        this.state.domain = props.domain
+      }
 
     render() {
         return (
@@ -27,6 +33,10 @@ class EndpointCreate extends Component {
                 <button type="submit">Create</button>
             </form>
         )
+    }
+
+    componentWillUnmount() {
+        this.ref.off()
     }
 
     handleInputChange = event => {
@@ -52,11 +62,10 @@ class EndpointCreate extends Component {
         }
 
         const { firebase } = this.props
-        let domain = firebase.auth().currentUser.email.split("@")[1]
         this.ref = firebase
             .firestore()
             .collection('domains')
-            .doc(domain)
+            .doc(this.state.domain)
             .collection('endpoints')
             .doc(this.state.path)
             .set({
