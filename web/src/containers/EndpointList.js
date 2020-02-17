@@ -8,9 +8,12 @@ class EndpointList extends Component {
   }
   componentDidMount() {
     const { firebase } = this.props
+    let domain = firebase.auth().currentUser.email.split("@")[1]
     this.ref = firebase
       .firestore()
-      .collection('mocks')
+      .collection('domains')
+      .doc(domain)
+      .collection('endpoints')
       .onSnapshot((snapshot) => {
         this.setState({
           mocks: snapshot.docs,

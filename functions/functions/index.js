@@ -4,10 +4,15 @@ const admin = require('firebase-admin');
 admin.initializeApp();
 
 exports.serveJSON = functions.https.onRequest((request, response) => {
-    let docId = request.path.substring(1)
+    let matches = request.path.split('/')
+    let domain = matches[1]
+    let endpoint = matches[2]
+
     admin.firestore()
-        .collection('mocks')
-        .doc(docId)
+        .collection('domains')
+        .doc(domain)
+        .collection('endpoints')
+        .doc(endpoint)
         .get()
         .then((doc) => {
             var string = doc.data()['json']

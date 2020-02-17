@@ -52,9 +52,12 @@ class EndpointCreate extends Component {
         }
 
         const { firebase } = this.props
-        firebase
+        let domain = firebase.auth().currentUser.email.split("@")[1]
+        this.ref = firebase
             .firestore()
-            .collection('mocks')
+            .collection('domains')
+            .doc(domain)
+            .collection('endpoints')
             .doc(this.state.path)
             .set({
                 json: this.state.json
