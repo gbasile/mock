@@ -7,7 +7,7 @@ import Header from '../header'
 
 const SignIn = ({ firebase }) => (
   <div>
-    <Header siteTitle="🚀 Mocks" />
+    <Header siteTitle="Mocks 🚀" />
     <div
       style={{
         margin: '0 auto',

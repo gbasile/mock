@@ -1,22 +1,22 @@
 module.exports = {
   siteMetadata: {
-    title: '🚀 Mocks',
+    title: 'Mocks 🚀',
   },
   plugins: [
     'gatsby-plugin-react-helmet',
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: 'gatsby-starter-firebase',
-        short_name: 'starter',
+        name: 'Mock endpoint manager',
+        short_name: 'mocks',
         start_url: '/',
         background_color: '#ffb200',
-        theme_color: '#663399',
+        theme_color: '#4698E4',
         display: 'minimal-ui',
-        icon: 'src/images/gatsby-icon.png', // This path is relative to the root of the site.
+        icon: 'src/images/rocket.png',
       },
     },
-    'gatsby-plugin-layout'
+    'gatsby-plugin-layout',
     // 'gatsby-plugin-offline',
   ],
 }
