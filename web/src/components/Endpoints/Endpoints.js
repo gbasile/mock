@@ -1,11 +1,10 @@
 import React, { Component } from 'react'
-import SignOut from '../containers/SignOut'
-import { withFirebase } from '../components/FirebaseContext'
-import Layout from '../components/layout'
-import EndpointList from '../containers/EndpointList'
-import EndpointCreate from '../containers/EndpointCreate'
+import SignOut from '../Authentication/SignOut'
+import { withFirebase } from '../FirebaseContext'
+import EndpointList from './EndpointList'
+import EndpointCreate from './EndpointCreate'
 
-class EndpointsPage extends Component {
+class Endpoints extends Component {
   state = { domain: null }
 
   componentDidMount() {
@@ -27,22 +26,18 @@ class EndpointsPage extends Component {
 
   render() {
     if (this.state.domain == null) {
-      return (
-        <Layout>
-          <h1>Logging in</h1>
-        </Layout>
-      )
+      return <h1>Logging in</h1>
     } else {
       return (
-        <Layout>
-          <h1>Endpoints availables</h1>
+        <div>
+          <h1>Create new endpoint</h1>
           <EndpointCreate domain={this.state.domain} />
+          <h1>Endpoints availables</h1>
           <EndpointList domain={this.state.domain} />
-          <SignOut />
-        </Layout>
+        </div>
       )
     }
   }
 }
 
-export default withFirebase(EndpointsPage)
+export default withFirebase(Endpoints)

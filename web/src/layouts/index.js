@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 
 import getFirebase from '../firebase'
 import FirebaseContext from '../components/FirebaseContext'
-import SignIn from '../containers/SignIn'
+import SignIn from '../components/Authentication/SignIn'
 
 class Layout extends Component {
   state = {

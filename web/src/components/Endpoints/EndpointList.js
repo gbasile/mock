@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { withFirebase } from '../components/FirebaseContext'
+import { withFirebase } from '../FirebaseContext'
 import EndpointItem from './EndpointItem'
 
 class EndpointList extends Component {

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { withFirebase } from '../components/FirebaseContext'
+import { withFirebase } from '../FirebaseContext'
 
 class EndpointCreate extends Component {
   constructor(props) {
@@ -7,31 +7,29 @@ class EndpointCreate extends Component {
     this.state = {
       domain: props.domain,
       path: null,
-      json: '{}',
+      json: null,
     }
   }
 
   render() {
     return (
       <form onSubmit={this.createEndpoint}>
-        <label>
-          Endpoint path
-          <input
-            type="text"
-            name="path"
-            value={this.state.path}
-            onChange={this.handleInputChange}
-          />
-        </label>
-        <label>
-          JSON
-          <input
-            type="text"
-            name="json"
-            value={this.state.json}
-            onChange={this.handleInputChange}
-          />
-        </label>
+        <input
+          type="text"
+          name="path"
+          placeholder="Insert the path"
+          value={this.state.path}
+          onChange={this.handleInputChange}
+        />
+        <br />
+        <input
+          type="text"
+          name="json"
+          placeholder="Paste your JSON here"
+          value={this.state.json}
+          onChange={this.handleInputChange}
+        />
+        <br />
         <button type="submit">Create</button>
       </form>
     )

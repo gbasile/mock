@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { withFirebase } from '../components/FirebaseContext'
+import { withFirebase } from '../FirebaseContext'
 
 class Signout extends Component {
   signOut = () => {

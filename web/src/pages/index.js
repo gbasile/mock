@@ -1,12 +1,11 @@
 import React from 'react'
-import { Link } from 'gatsby'
-
 import Layout from '../components/layout'
-import SignOut from '../containers/SignOut'
+import Endpoints from '../components/Endpoints/Endpoints'
+import SignOut from '../components/Authentication/SignOut'
 
 const IndexPage = () => (
   <Layout>
-    <Link to="/endpoints/">Endpoints</Link>
+    <Endpoints />
     <br />
     <br />
     <SignOut />

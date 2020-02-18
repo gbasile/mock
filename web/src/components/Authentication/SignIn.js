@@ -1,9 +1,9 @@
 import React from 'react'
 import { StyledFirebaseAuth } from 'react-firebaseui'
 
-import { getUiConfig } from '../firebase'
-import { withFirebase } from '../components/FirebaseContext'
-import Header from '../components/header'
+import { getUiConfig } from '../../firebase'
+import { withFirebase } from '../FirebaseContext'
+import Header from '../header'
 
 const SignIn = ({ firebase }) => (
   <div>
