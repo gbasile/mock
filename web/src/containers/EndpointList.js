@@ -4,10 +4,10 @@ import EndpointItem from './EndpointItem'
 
 class EndpointList extends Component {
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {
       domain: props.domain,
-      endpoints: []
+      endpoints: [],
     }
   }
 
@@ -18,13 +18,13 @@ class EndpointList extends Component {
       .collection('domains')
       .doc(this.state.domain)
       .collection('endpoints')
-      .onSnapshot((snapshot) => {
+      .onSnapshot(snapshot => {
         this.setState({
           endpoints: snapshot.docs,
         })
       })
   }
-  
+
   componentWillUnmount() {
     this.ref.off()
   }
@@ -39,7 +39,9 @@ class EndpointList extends Component {
 
     return (
       <ul>
-        {endpoints.map(endpoint => (<EndpointItem key={endpoint.id} endpoint={endpoint} domain={domain}/>))}
+        {endpoints.map(endpoint => (
+          <EndpointItem key={endpoint.id} endpoint={endpoint} domain={domain} />
+        ))}
       </ul>
     )
   }
