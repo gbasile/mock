@@ -7,9 +7,7 @@ import EndpointCreate from '../containers/EndpointCreate'
 import IndexPage from '.'
 
 class EndpointsPage extends Component {
-  state = {
-    domain: ''
-  }
+  state = { domain: null }
 
   componentDidMount() {
     const { firebase } = this.props
@@ -20,7 +18,7 @@ class EndpointsPage extends Component {
           let domain = user.email.split("@")[1]
           this.setState({ domain: domain })
         } else {
-          this.setState({ domain: '' })
+          this.setState({ domain: null })
         }
       })
   }
@@ -30,7 +28,7 @@ class EndpointsPage extends Component {
   }
 
   render() {
-    if (this.state.domain == '') {
+    if (this.state.domain == null) {
       return <Layout><h1>Logging in</h1></Layout>
     } else {
       return (

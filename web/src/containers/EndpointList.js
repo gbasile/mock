@@ -3,14 +3,12 @@ import { withFirebase } from '../components/FirebaseContext'
 import EndpointItem from './EndpointItem'
 
 class EndpointList extends Component {
-  state = {
-    domain: '',
-    endpoints: []
-  }
-
   constructor(props) {
     super(props);
-    this.state.domain = props.domain
+    this.state = {
+      domain: props.domain,
+      endpoints: []
+    }
   }
 
   componentDidMount() {

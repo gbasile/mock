@@ -2,16 +2,14 @@ import React, { Component } from 'react'
 import { withFirebase } from '../components/FirebaseContext'
 
 class EndpointCreate extends Component {
-    state = {
-        domain: '',
-        path: '',
-        json: '{}'
-    }
-
     constructor(props) {
         super(props);
-        this.state.domain = props.domain
-      }
+        this.state = {
+            domain: props.domain,
+            path: null,
+            json: '{}'
+        }
+    }
 
     render() {
         return (
