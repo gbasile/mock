@@ -8,10 +8,17 @@ import AuthenticationInfo from './AuthenticationInfo'
 class Endpoints extends Component {
   state = { domain: null }
 
+  setState(params) {
+    if (this._mounted) {
+      super.setState(params)
+    }
+  }
+
   componentDidMount() {
+    this._mounted = true
     const { firebase } = this.props
 
-    this.ref = firebase.auth().onAuthStateChanged(user => {
+    firebase.auth().onAuthStateChanged(user => {
       if (user) {
         let domain = user.email.split('@')[1]
         this.setState({ domain: domain })
@@ -22,7 +29,7 @@ class Endpoints extends Component {
   }
 
   componentWillUnmount() {
-    this.ref.off()
+    this._mounted = false
   }
 
   render() {

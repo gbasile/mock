@@ -6,8 +6,14 @@ class EndpointCreate extends Component {
     super(props)
     this.state = {
       domain: props.domain,
-      path: null,
-      json: null,
+      path: '',
+      json: '',
+    }
+  }
+
+  setState(params) {
+    if (this._mounted) {
+      super.setState(params)
     }
   }
 
@@ -35,8 +41,12 @@ class EndpointCreate extends Component {
     )
   }
 
+  componentDidMount() {
+    this._mounted = true
+  }
+
   componentWillUnmount() {
-    this.ref.off()
+    this._mounted = false
   }
 
   handleInputChange = event => {
@@ -68,6 +78,8 @@ class EndpointCreate extends Component {
       .doc(this.state.domain)
       .collection('endpoints')
       .doc(this.state.path)
+
+    this.ref
       .set({
         json: this.state.json,
       })
