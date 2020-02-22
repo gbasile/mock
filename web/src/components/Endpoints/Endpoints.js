@@ -3,6 +3,7 @@ import SignOut from '../Authentication/SignOut'
 import { withFirebase } from '../FirebaseContext'
 import EndpointList from './EndpointList'
 import EndpointCreate from './EndpointCreate'
+import AuthenticationInfo from './AuthenticationInfo'
 
 class Endpoints extends Component {
   state = { domain: null }
@@ -30,6 +31,8 @@ class Endpoints extends Component {
     } else {
       return (
         <div>
+          <h1>Auth</h1>
+          <AuthenticationInfo domain={this.state.domain} />
           <h1>Create new endpoint</h1>
           <EndpointCreate domain={this.state.domain} />
           <h1>Endpoints availables</h1>
