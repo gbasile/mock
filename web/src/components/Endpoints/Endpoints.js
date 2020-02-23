@@ -11,18 +11,12 @@ class Endpoints extends Component {
   componentDidMount() {
     const { firebase } = this.props
 
-    this.ref = firebase.auth().onAuthStateChanged(user => {
+    firebase.auth().onAuthStateChanged(user => {
       if (user) {
         let domain = user.email.split('@')[1]
         this.setState({ domain: domain })
-      } else {
-        this.setState({ domain: null })
       }
     })
-  }
-
-  componentWillUnmount() {
-    this.ref.off()
   }
 
   render() {

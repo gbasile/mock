@@ -20,7 +20,7 @@ class AuthenticationInfo extends Component {
 
   componentDidMount() {
     const { firebase } = this.props
-    this.ref = firebase
+    firebase
       .firestore()
       .collection('domains')
       .doc(this.state.domain)
@@ -30,10 +30,6 @@ class AuthenticationInfo extends Component {
           api_key: data['api_key'],
         })
       })
-  }
-
-  componentWillUnmount() {
-    this.ref.off()
   }
 }
 

@@ -13,7 +13,8 @@ class EndpointList extends Component {
 
   componentDidMount() {
     const { firebase } = this.props
-    this.ref = firebase
+
+    firebase
       .firestore()
       .collection('domains')
       .doc(this.state.domain)
@@ -23,10 +24,6 @@ class EndpointList extends Component {
           endpoints: snapshot.docs,
         })
       })
-  }
-
-  componentWillUnmount() {
-    this.ref.off()
   }
 
   render() {

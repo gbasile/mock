@@ -6,8 +6,8 @@ class EndpointCreate extends Component {
     super(props)
     this.state = {
       domain: props.domain,
-      path: null,
-      json: null,
+      path: '',
+      json: '',
     }
   }
 
@@ -35,10 +35,6 @@ class EndpointCreate extends Component {
     )
   }
 
-  componentWillUnmount() {
-    this.ref.off()
-  }
-
   handleInputChange = event => {
     const target = event.target
     const value = target.value
@@ -62,7 +58,7 @@ class EndpointCreate extends Component {
     }
 
     const { firebase } = this.props
-    this.ref = firebase
+    firebase
       .firestore()
       .collection('domains')
       .doc(this.state.domain)
