@@ -10,12 +10,6 @@ class AuthenticationInfo extends Component {
     }
   }
 
-  setState(params) {
-    if (this._mounted) {
-      super.setState(params)
-    }
-  }
-
   render() {
     if (this.state.api_key == null) {
       return <p>No authentication required</p>
@@ -25,23 +19,21 @@ class AuthenticationInfo extends Component {
   }
 
   componentDidMount() {
-    this._mounted = true
     const { firebase } = this.props
     this.ref = firebase
       .firestore()
       .collection('domains')
       .doc(this.state.domain)
-
-    this.ref.onSnapshot(snapshot => {
-      let data = snapshot.data()
-      this.setState({
-        api_key: data['api_key'],
+      .onSnapshot(snapshot => {
+        let data = snapshot.data()
+        this.setState({
+          api_key: data['api_key'],
+        })
       })
-    })
   }
 
   componentWillUnmount() {
-    this._mounted = true
+    this.ref.off()
   }
 }
 

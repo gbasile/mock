@@ -11,16 +11,9 @@ class EndpointList extends Component {
     }
   }
 
-  setState(params) {
-    if (this._mounted) {
-      super.setState(params)
-    }
-  }
-
   componentDidMount() {
     const { firebase } = this.props
-    this._mounted = true
-    firebase
+    this.ref = firebase
       .firestore()
       .collection('domains')
       .doc(this.state.domain)
@@ -33,7 +26,7 @@ class EndpointList extends Component {
   }
 
   componentWillUnmount() {
-    this._mounted = false
+    this.ref.off()
   }
 
   render() {
